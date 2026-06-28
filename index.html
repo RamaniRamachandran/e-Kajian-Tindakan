@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penjana AI Kajian Tindakan</title>
+    <title>e-KAJIAN TINDAKAN</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -36,11 +38,11 @@
             line-height: 1.6;
         }
 
-        /* Hero Section */
+        /* Hero & Logo Section */
         header {
             background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-light) 100%);
             color: var(--white);
-            padding: 5rem 2rem;
+            padding: 4rem 2rem 5rem 2rem;
             text-align: center;
             position: relative;
             border-bottom: 5px solid var(--gold-primary);
@@ -55,17 +57,44 @@
             pointer-events: none;
         }
 
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-            color: var(--white);
-            margin-bottom: 1rem;
+        /* Branding Styles */
+        .brand-container {
+            margin-bottom: 1.5rem;
             animation: fadeInDown 0.8s ease;
         }
 
-        .hero-title span {
+        .logo-rr {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
             color: var(--gold-primary);
+            line-height: 1;
+            letter-spacing: -2px;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            border: 3px solid var(--gold-primary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .educator-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease 0.2s forwards;
+            opacity: 0;
         }
 
         .hero-subtitle {
@@ -74,7 +103,8 @@
             max-width: 600px;
             margin: 0 auto;
             color: #E2E8F0;
-            animation: fadeInUp 0.8s ease;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
         }
 
         /* Main Container */
@@ -107,7 +137,7 @@
             .form-grid {
                 grid-template-columns: 1fr;
             }
-            .hero-title { font-size: 2rem; }
+            .hero-title { font-size: 2.2rem; }
             .form-card { padding: 1.5rem; }
         }
 
@@ -130,7 +160,7 @@
             color: var(--gold-primary);
         }
 
-        .input-group input, .input-group select, .input-group textarea {
+        .input-group input, .input-group select {
             padding: 0.8rem 1rem;
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -140,7 +170,7 @@
             background-color: #FCFDFE;
         }
 
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+        .input-group input:focus, .input-group select:focus {
             outline: none;
             border-color: var(--gold-primary);
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
@@ -374,17 +404,23 @@
 </head>
 <body>
 
+    <!-- Hero & Branding Section -->
     <header>
-        <h1 class="hero-title">PENJANA AI <span>KAJIAN TINDAKAN</span></h1>
-        <p class="hero-subtitle">Transformasikan amalan bilik darjah anda. Jana idea, intervensi, dan metodologi kajian tindakan akademik secara sistematik.</p>
+        <div class="brand-container">
+            <div class="logo-rr">RR</div>
+            <div class="educator-name">Ramani Ramachandran, KPM Educator</div>
+        </div>
+        <h1 class="hero-title" style="opacity: 1;">e-KAJIAN TINDAKAN</h1>
+        <p class="hero-subtitle" style="opacity: 1;">Jana idea kajian tindakan secara automatik menggunakan kata kunci.</p>
     </header>
 
     <div class="container">
+        <!-- User Input Section -->
         <section class="form-card">
             <form id="action-research-form" onsubmit="generateResearch(event)">
                 <div class="form-grid">
                     <div class="input-group">
-                        <label for="isu"><i class="fa-solid penalties fa-triangle-exclamation"></i> Isu / Masalah Murid</label>
+                        <label for="isu"><i class="fa-solid fa-triangle-exclamation"></i> Isu / Masalah Murid</label>
                         <input type="text" id="isu" placeholder="Contoh: Sukar mengingati sifir, Lemah membina ayat" required>
                     </div>
                     <div class="input-group">
@@ -392,7 +428,7 @@
                         <input type="text" id="subjek" placeholder="Contoh: Matematik, Bahasa Melayu, Sains" required>
                     </div>
                     <div class="input-group">
-                        <label for="tahap"><i class="fa-solid fa-gradient fa-graduation-cap"></i> Tahap Murid</label>
+                        <label for="tahap"><i class="fa-solid fa-graduation-cap"></i> Tahap Murid</label>
                         <select id="tahap" required>
                             <option value="" disabled selected>Pilih Tahap Murid</option>
                             <option value="Prasekolah">Prasekolah</option>
@@ -404,8 +440,8 @@
                         </select>
                     </div>
                     <div class="input-group">
-                        <label for="kata-kunci"><i class="fa-solid fa-tags"></i> Kata Kunci Tambahan (Opsional)</label>
-                        <input type="text" id="kata-kunci" placeholder="Contoh: Digital, Gamifikasi, Kad Imbasan, Didik Hibur">
+                        <label for="kata-kunci"><i class="fa-solid fa-tags"></i> Kata Kunci Tambahan</label>
+                        <input type="text" id="kata-kunci" placeholder="Contoh: Digital, Gamifikasi, Kad Imbasan" required>
                     </div>
                 </div>
                 <div class="btn-container">
@@ -415,11 +451,13 @@
             </form>
         </section>
 
+        <!-- Loading State -->
         <div class="loading" id="loading-state">
             <div class="spinner"></div>
-            <p>Memproses data dan menjana idea kajian tindakan berimpak tinggi...</p>
+            <p>Memproses data dan menjana 3 cadangan kajian tindakan terbaik...</p>
         </div>
 
+        <!-- AI Output Section -->
         <section id="output-section">
             <h2 class="output-heading">Cadangan Kajian Tindakan</h2>
             
@@ -430,104 +468,101 @@
             </div>
 
             <div id="proposals-container">
-                </div>
+                <!-- Cards dynamically inserted here -->
+            </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Penjana AI Kajian Tindakan. Dibangunkan berasaskan Format Profesional Dewan Bahasa dan Pustaka.</p>
+        <p>&copy; 2026 e-KAJIAN TINDAKAN. Reka bentuk eksklusif untuk Ramani Ramachandran (KPM Educator).</p>
     </footer>
 
     <script>
         function generateResearch(event) {
             event.preventDefault();
 
-            // Show Loading
             document.getElementById('loading-state').style.display = 'block';
             document.getElementById('output-section').style.display = 'none';
 
-            // Get Input Values
-            const isu = document.getElementById('isu').value;
-            const subjek = document.getElementById('subjek').value;
+            // Ambil input terkini
+            const isu = document.getElementById('isu').value.trim();
+            const subjek = document.getElementById('subjek').value.trim();
             const tahap = document.getElementById('tahap').value;
-            const kataKunci = document.getElementById('kata-kunci').value || "Pendekatan Kreatif";
+            const kataKunci = document.getElementById('kata-kunci').value.trim();
 
             setTimeout(() => {
-                // Generate Content
                 const container = document.getElementById('proposals-container');
-                container.innerHTML = ''; // Clear previous
+                container.innerHTML = ''; 
 
-                const templates = [
+                const frameworks = [
                     {
-                        type: "Pendekatan Gamifikasi Digital",
-                        inovasi: `Aplikasi Pintar ${subjek} (E-Kit)`,
-                        intervensi: `Pelaksanaan aktiviti intervensi berasaskan aplikasi atau platform permainan digital (seperti Quizizz/Wordwall khusus) yang diadaptasi mengikut sukatan kognitif murid.`
+                        type: `Pendekatan Gamifikasi Digital Berasaskan ${kataKunci}`,
+                        inovasi: `Aplikasi Pintar Pro-${subjek} (${kataKunci} E-Kit)`,
+                        intervensi: `Pelaksanaan aktiviti intervensi berstruktur memanfaatkan elemen interaktif ${kataKunci} yang disesuaikan mengikut keupayaan kognitif murid bagi mengatasi isu [${isu}].`
                     },
                     {
-                        type: "Pendekatan Bahan Maujud & Visual",
-                        inovasi: `Kotak Info-Grafik / Kad Imbasan Multi-Sensori`,
-                        intervensi: `Penggunaan kit fizikal berstruktur yang menggabungkan elemen visual dan taktil bagi mempermudah pemahaman konsep abstrak secara berperingkat.`
+                        type: `Pendekatan Bahan Maujud Visual Kreatif (Modul ${kataKunci})`,
+                        inovasi: `Kit Interaktif Multi-Sensori ${subjek} (Edisi ${kataKunci})`,
+                        intervensi: `Penggunaan kit atau modul fizikal dan visual bertemakan ${kataKunci} bagi mempermudah pemahaman konsep abstrak [${isu}] secara berperingkat.`
                     },
                     {
-                        type: "Pendekatan Didik Hibur & Mnemonik",
-                        inovasi: `Sistem Mnemonik Rima & Singkatan Berirama`,
-                        intervensi: `Pengenalan formula atau teknik penstrukturan maklumat menggunakan kaedah hafalan kreatif, penceritaan, ataupun nyanyian berstruktur.`
+                        type: `Sistem Strategi Pemikiran Kritikal Didik Hibur (${kataKunci})`,
+                        inovasi: `Kad Imbasan & Formula Akronim Masteri ${subjek}`,
+                        intervensi: `Pengenalan teknik penstrukturan maklumat dan formula kreatif berpandukan konsep ${kataKunci} bagi memecahkan masalah kompleks dalam [${isu}].`
                     }
                 ];
 
-                templates.forEach((template, index) => {
+                frameworks.forEach((fw, index) => {
                     const isActive = index === 0 ? 'active' : '';
-                    
-                    const tajuk = `Meningkatkan Penguasaan ${isu} dalam Mata Pelajaran ${subjek} bagi Murid ${tahap} Melalui ${template.type}`;
-                    const tajukInovasi = `Inovasi: ${template.inovasi}`;
+                    const tajukKajian = `Meningkatkan Penguasaan ${isu} dalam Mata Pelajaran ${subjek} bagi Murid ${tahap} Melalui ${fw.type}`;
 
                     const cardHTML = `
                         <div class="proposal-card ${isActive}" id="proposal-${index}">
                             <div class="output-grid">
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-heading"></i> Tajuk Kajian Tindakan</h3>
-                                    <p><strong>${tajuk}</strong></p>
+                                    <p><strong>${tajukKajian}</strong></p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-lightbulb"></i> Cadangan Tajuk Inovasi</h3>
-                                    <p><strong>${tajukInovasi}</strong></p>
+                                    <p><strong>${fw.inovasi}</strong></p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-circle-exclamation"></i> Masalah Kajian</h3>
-                                    <p>Murid tahap ${tahap} didapati menghadapi kesukaran yang signifikan untuk menguasai elemen berkaitan [${isu}] dalam mata pelajaran ${subjek}. Hal ini menjejaskan motivasi serta prestasi akademik mereka dalam ujian formatif dan sumatif.</p>
+                                    <p>Murid ${tahap} didapati menghadapi kekangan utama untuk memahami dan menguasai aspek <strong>${isu}</strong> dalam mata pelajaran ${subjek}. Hal ini mengakibatkan kemerosotan prestasi akademik dan kurangnya pelibatan aktif semasa PdP.</p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-bolt"></i> Pencetus Idea</h3>
-                                    <p>Hasil analisis refleksi pengajaran dan pembelajaran lalu mendapati kaedah konvensional kurang berkesan untuk menarik minat murid. Oleh itu, pencetusan idea berfokuskan <em>${kataKunci}</em> melalui <em>${template.type}</em> dilihat mampu merapatkan jurang pemahaman tersebut.</p>
+                                    <p>Melalui refleksi kendiri pengajaran terdahulu, pendekatan konvensional kurang mampan untuk merangsang minda murid. Integrasi elemen <em>${kataKunci}</em> melalui <em>${fw.type}</em> dipilih bagi menyediakan suasana pembelajaran yang lebih berimpak tinggi.</p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-bullseye"></i> Objektif Kajian</h3>
                                     <ul>
-                                        <li>Meningkatkan tahap penguasaan murid dalam aspek [${isu}] menerusi aplikasi ${template.inovasi}.</li>
-                                        <li>Mengubah amalan pedagogi guru agar menjadi lebih interaktif, menyeronokkan, dan berpusatkan murid.</li>
+                                        <li>Meningkatkan kefahaman dan tahap penguasaan murid terhadap <strong>${isu}</strong> dengan bantuan intervensi ${fw.inovasi}.</li>
+                                        <li>Memantapkan kualiti amalan pedagogi guru agar lebih dinamik, inklusif, dan berpusatkan murid ${tahap}.</li>
                                     </ul>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-question"></i> Persoalan Kajian</h3>
                                     <ul>
-                                        <li>Sejauh manakah penggunaan ${template.inovasi} dapat membantu murid meningkatkan pemahaman terhadap [${isu}]?</li>
-                                        <li>Bagaimanakah tindak balas atau persepsi murid terhadap pelaksanaan intervensi ini dalam bilik darjah?</li>
+                                        <li>Adakah pengenalan ${fw.inovasi} dapat membantu meningkatkan kemahiran murid dalam aspek <strong>${isu}</strong>?</li>
+                                        <li>Bagaimanakah corak pelibatan dan maklum balas murid ${tahap} selepas melalui intervensi ini?</li>
                                     </ul>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-puzzle-piece"></i> Cadangan Intervensi / Inovasi</h3>
-                                    <p>${template.intervensi}</p>
+                                    <p>${fw.intervensi}</p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-gears"></i> Metodologi Ringkas</h3>
-                                    <p>Kajian ini menggunakan Model Kajian Tindakan Kemmis & McTaggart yang melibatkan empat fasa utama secara berpusingan (Gelung): Merefleks, Merancang, Bertindak, dan Memerhati.</p>
+                                    <p>Kajian tindakan ini menerapkan acuan kitaran Model Kemmis & McTaggart, merangkumi empat fasa utama iaitu Refleksi (Reflect), Perancangan (Plan), Tindakan (Act), dan Pemerhatian (Observe).</p>
                                 </div>
                                 <div class="output-block">
                                     <h3><i class="fa-solid fa-clipboard-check"></i> Instrumen Cadangan</h3>
                                     <ul>
-                                        <li>Ujian Pra dan Ujian Pos (Mengukur pencapaian akademik).</li>
-                                        <li>Borang Pemerhatian Berstruktur (Menilai tahap pelibatan murid semasa intervensi).</li>
-                                        <li>Soal Selidik Ringkas atau Temu Bual (Menganalisis persepsi dan emosi murid).</li>
+                                        <li>Ujian Pra dan Ujian Pos (Data Kuantitatif untuk prestasi <strong>${isu}</strong>).</li>
+                                        <li>Senarai Semak Pemerhatian Berstruktur (Data Kualitatif pelibatan murid).</li>
+                                        <li>Soal Selidik Persepsi/Temu Bual Ringkas (Mengukur motivasi murid).</li>
                                     </ul>
                                 </div>
                             </div>
@@ -536,25 +571,20 @@
                     container.innerHTML += cardHTML;
                 });
 
-                // Hide Loading & Show Output
                 document.getElementById('loading-state').style.display = 'none';
                 document.getElementById('output-section').style.display = 'block';
-                
-                // Scroll smoothly to output
                 document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
 
             }, 1200);
         }
 
         function switchTab(index) {
-            // Update Active Buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach((btn, idx) => {
                 if(idx === index) btn.classList.add('active');
                 else btn.classList.remove('active');
             });
 
-            // Update Active Cards
             const cards = document.querySelectorAll('.proposal-card');
             cards.forEach((card, idx) => {
                 if(idx === index) card.classList.add('active');
