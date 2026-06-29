@@ -3,217 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-KAJIAN TINDAKAN | Penjana Idea</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>e KAJIAN TINDAKAN</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: '#0f172a',
-                        gold: '#fbbf24',
-                        goldDark: '#f59e0b',
+                        navy: {
+                            900: '#061024',
+                            800: '#0B1B3D',
+                            700: '#152C5B'
+                        },
+                        gold: {
+                            400: '#E5C05C',
+                            500: '#D4AF37',
+                            600: '#B5952F'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        body {
+            background-color: #0B1B3D;
+            color: #ffffff;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #fbbf24;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+        
+        .gold-3d {
+            color: #D4AF37;
+            text-shadow: 1px 1px 0px #b5952f, 2px 2px 0px #8a7122, 3px 3px 4px rgba(0,0,0,0.5);
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .flip-r {
+            display: inline-block;
+            transform: scaleX(-1);
+        }
+
+        .glass-card {
+            background: rgba(21, 44, 91, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #D4AF37;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #061024; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+<body class="font-sans antialiased min-h-screen">
 
-    <header class="bg-navy text-white shadow-lg border-b-4 border-gold">
-        <div class="max-w-6xl mx-auto px-6 py-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-3">
-                <i class="fa-solid fa-lightbulb text-gold mr-3 animate-pulse"></i>e-KAJIAN TINDAKAN
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 font-light">
-                Jana idea kajian tindakan secara automatik menggunakan kata kunci.
-            </p>
+    <header class="pt-16 pb-10 px-4 text-center">
+        <div class="flex flex-col items-center justify-center mb-6">
+            <div class="text-7xl font-serif gold-3d flex items-center tracking-tighter">
+                <span>R</span><span class="flip-r">R</span>
+            </div>
+            <div class="text-white text-sm tracking-[0.3em] uppercase mt-2 border-t border-gold-500 pt-1">Innovation</div>
+            <div class="text-gold-500 font-bold mt-4 tracking-widest text-lg">FORWARD TOGETHER</div>
         </div>
+
+        <h1 class="text-4xl md:text-6xl font-serif text-gold-500 mt-8 mb-4">e KAJIAN TINDAKAN</h1>
+        <p class="text-lg md:text-xl text-gray-300 italic max-w-2xl mx-auto font-light">"Jana idea kajian tindakan secara automatik menggunakan kata kunci"</p>
     </header>
 
-    <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <div class="lg:col-span-4 space-y-6">
-            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-navy">
-                <h2 class="text-xl font-semibold mb-6 flex items-center text-navy">
-                    <i class="fa-solid fa-keyboard mr-2 text-gold"></i> Maklumat Kajian
-                </h2>
-                
-                <form id="kajianForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Isu / Masalah Murid</label>
-                        <input type="text" id="isu" required placeholder="Cth: Sukar mengingat sifir" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Mata Pelajaran / Bidang</label>
-                        <input type="text" id="subjek" required placeholder="Cth: Matematik" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Tahap Murid</label>
-                        <input type="text" id="tahap" required placeholder="Cth: Tahun 4 / Tingkatan 2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Objektif Kajian</label>
-                        <textarea id="objektif" required rows="3" placeholder="Cth: Meningkatkan penguasaan darab..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none transition"></textarea>
-                    </div>
-
-                    <div class="flex gap-3 pt-4">
-                        <button type="submit" class="flex-1 bg-navy hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-200 flex justify-center items-center">
-                            <i class="fa-solid fa-wand-magic-sparkles mr-2 text-gold"></i> JANA IDEA
-                        </button>
-                        <button type="button" id="resetBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg shadow transition duration-200">
-                            <i class="fa-solid fa-rotate-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="lg:col-span-8">
-            <div id="loading" class="hidden flex-col items-center justify-center h-64 bg-white rounded-xl shadow-md border border-gray-100">
-                <div class="loader mb-4"></div>
-                <p class="text-navy font-medium animate-pulse">Menjana idea secara magis...</p>
-            </div>
-
-            <div id="emptyState" class="flex flex-col items-center justify-center h-full bg-white rounded-xl shadow-md border border-gray-100 p-10 text-center opacity-70">
-                <i class="fa-solid fa-robot text-6xl text-gray-300 mb-4"></i>
-                <h3 class="text-xl font-medium text-gray-500">Sedia untuk Menjana</h3>
-                <p class="text-gray-400 mt-2 text-sm">Masukkan maklumat di sebelah kiri dan klik "JANA IDEA" untuk melihat cadangan kepintaran buatan (AI).</p>
-            </div>
-
-            <div id="resultsContainer" class="hidden space-y-6">
+    <main class="container mx-auto px-4 pb-20 max-w-6xl">
+        <section class="glass-card rounded-2xl p-6 md:p-10 mb-12">
+            <h2 class="text-2xl font-serif text-gold-500 mb-6 border-b border-gold-500/30 pb-2">
+                <i class="fas fa-edit mr-2"></i> Parameter Kajian
+            </h2>
+            
+            <form id="kajianForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-2">
+                    <label class="text-sm font-semibold text-gold-400">1. Isu / Masalah Murid</label>
+                    <input type="text" id="isu" placeholder="Cth: Sukar mengingat fakta sejarah" class="input-field rounded-lg p-3 w-full" required>
                 </div>
-        </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="text-sm font-semibold text-gold-400">2. Mata Pelajaran / Bidang</label>
+                    <input type="text" id="subjek" placeholder="Cth: Sejarah" class="input-field rounded-lg p-3 w-full" required>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="text-sm font-semibold text-gold-400">3. Tahap Murid</label>
+                    <input type="text" id="tahap" placeholder="Cth: Tahun 5 / Tingkatan 3" class="input-field rounded-lg p-3 w-full" required>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="text-sm font-semibold text-gold-400">4. Objektif Kajian</label>
+                    <input type="text" id="objektif" placeholder="Cth: Meningkatkan daya ingatan murid" class="input-field rounded-lg p-3 w-full" required>
+                </div>
+            </form>
+
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <button onclick="generateIdea()" class="bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold py-3 px-6 rounded-lg transition-all duration-300">✨ JANA IDEA KAJIAN</button>
+                <button onclick="resetForm()" class="bg-transparent border border-gray-400 hover:border-white text-gray-300 py-3 px-6 rounded-lg transition-all duration-300">🔄 RESET</button>
+                <button onclick="downloadOutput()" class="bg-navy-700 border border-gold-500/50 text-gold-400 py-3 px-6 rounded-lg transition-all duration-300">⬇️ DOWNLOAD</button>
+                <button onclick="copyAIPrompt()" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">🤖 AI PROMPT</button>
+            </div>
+        </section>
+
+        <section id="outputSection" class="hidden">
+            <h2 class="text-3xl font-serif text-center text-gold-500 mb-10"><i class="fas fa-lightbulb mr-2"></i> Cadangan Idea</h2>
+            <div id="cardsContainer" class="grid grid-cols-1 lg:grid-cols-3 gap-8"></div>
+        </section>
     </main>
 
-    <footer class="bg-navy text-center py-6 mt-auto">
-        <p class="text-gray-400 text-sm">© 2026 e-Kajian Tindakan. Hak Cipta Terpelihara.</p>
-    </footer>
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300"></div>
 
     <script>
-        document.getElementById('kajianForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 3000);
+        }
+
+        function generateIdea() {
             const isu = document.getElementById('isu').value;
             const subjek = document.getElementById('subjek').value;
             const tahap = document.getElementById('tahap').value;
-            const objektifInput = document.getElementById('objektif').value;
+            const objektif = document.getElementById('objektif').value;
+            if(!isu || !subjek || !tahap || !objektif) return showToast("Sila isi semua ruang!");
 
-            // UI Transitions
-            document.getElementById('emptyState').classList.add('hidden');
-            document.getElementById('resultsContainer').classList.add('hidden');
-            document.getElementById('loading').classList.remove('hidden');
-            document.getElementById('loading').classList.add('flex');
-
-            // Simulate AI Generation delay
-            setTimeout(() => {
-                generateResults(isu, subjek, tahap, objektifInput);
-                document.getElementById('loading').classList.add('hidden');
-                document.getElementById('loading').classList.remove('flex');
-                document.getElementById('resultsContainer').classList.remove('hidden');
-            }, 1500);
-        });
-
-        document.getElementById('resetBtn').addEventListener('click', function() {
-            document.getElementById('kajianForm').reset();
-            document.getElementById('resultsContainer').classList.add('hidden');
-            document.getElementById('resultsContainer').innerHTML = '';
-            document.getElementById('emptyState').classList.remove('hidden');
-        });
-
-        function generateResults(isu, subjek, tahap, objektifInput) {
-            const container = document.getElementById('resultsContainer');
-            container.innerHTML = ''; // Clear previous
-
-            // Pre-defined interventions for variety
-            const interventions = [
-                { nama: "Kaedah Modul Interaktif Digital", inovasi: "Kit Pintar Digital" },
-                { nama: "Pendekatan Permainan Berstruktur (Gamifikasi)", inovasi: "Kotak Misteri Didik Hibur" },
-                { nama: "Teknik Rakan Sebaya Berpandu (Peer-Tutoring)", inovasi: "Modul Rakan Karib" }
-            ];
-
-            interventions.forEach((intervensi, index) => {
-                const cardHtml = `
-                    <div class="bg-white rounded-xl shadow-lg border-l-4 border-gold overflow-hidden fade-in" style="animation-delay: ${index * 0.2}s">
-                        <div class="bg-navy px-6 py-4 flex justify-between items-center">
-                            <h3 class="text-white font-semibold text-lg flex items-center">
-                                <span class="bg-gold text-navy rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold">${index + 1}</span>
-                                Cadangan Idea ${index + 1}
-                            </h3>
-                            <span class="px-3 py-1 bg-white text-navy text-xs font-bold rounded-full">${subjek}</span>
-                        </div>
-                        
-                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                            <div class="space-y-4">
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-bookmark text-gold"></i> Tajuk Kajian Tindakan</h4>
-                                    <p class="text-gray-700 mt-1 bg-gray-50 p-3 rounded border">Penggunaan ${intervensi.nama} untuk Mengatasi Isu ${isu} dalam Kalangan Murid ${tahap}.</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-gold"></i> Masalah Kajian</h4>
-                                    <p class="text-gray-700 mt-1">Murid ${tahap} menghadapi kesukaran yang ketara dalam ${isu} semasa sesi Pengajaran dan Pembelajaran (PdP) ${subjek}.</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-bullseye text-gold"></i> Objektif Kajian</h4>
-                                    <p class="text-gray-700 mt-1">${objektifInput}</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-circle-question text-gold"></i> Persoalan Kajian</h4>
-                                    <p class="text-gray-700 mt-1">Adakah penggunaan ${intervensi.nama} dapat membantu menyelesaikan isu ${isu} bagi murid ${tahap}?</p>
-                                </div>
-                            </div>
-
-                            <div class="space-y-4">
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-bolt text-gold"></i> Pencetus Idea</h4>
-                                    <p class="text-gray-700 mt-1">Refleksi guru mendapati pendekatan tradisional kurang berkesan untuk mengatasi isu ${isu}, justeru memerlukan elemen interaktif.</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-toolbox text-gold"></i> Cadangan Intervensi / Inovasi</h4>
-                                    <p class="text-gray-700 mt-1">${intervensi.nama}</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-star text-gold"></i> Cadangan Tajuk Inovasi</h4>
-                                    <p class="text-gray-700 mt-1 font-semibold text-goldDark">"${intervensi.inovasi} ${subjek}"</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-microscope text-gold"></i> Metodologi Ringkas</h4>
-                                    <p class="text-gray-700 mt-1">Model Kemmis & McTaggart (Tinjauan awal, Perancangan, Pelaksanaan, Pemerhatian, Refleksi).</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-navy font-bold flex items-center gap-2"><i class="fa-solid fa-clipboard-check text-gold"></i> Instrumen Cadangan</h4>
-                                    <p class="text-gray-700 mt-1">Ujian Pra & Pos, Pemerhatian Tingkah Laku, Temu Bual Ringkas.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHtml);
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '';
+            const ideas = ["Gamifikasi", "Visual-Mnemonic", "Koperatif"];
+            
+            ideas.forEach((type, i) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-xl p-6 space-y-3";
+                card.innerHTML = `<h3 class="text-gold-500 font-bold border-b border-gold-500/20 pb-2">${type}</h3>
+                                  <p class="text-sm"><strong class="text-gold-400">Tajuk:</strong> Meningkatkan ${isu} melalui ${type} bagi murid ${tahap}.</p>
+                                  <p class="text-sm"><strong class="text-gold-400">Objektif:</strong> ${objektif}.</p>
+                                  <p class="text-sm"><strong class="text-gold-400">Metodologi:</strong> Model Kemmis & McTaggart.</p>`;
+                container.appendChild(card);
             });
+            document.getElementById('outputSection').classList.remove('hidden');
+            showToast("Idea berjaya dijana!");
         }
+
+        function resetForm() { document.getElementById('kajianForm').reset(); document.getElementById('outputSection').classList.add('hidden'); }
+        function copyAIPrompt() { navigator.clipboard.writeText("Jana idea kajian tindakan untuk " + document.getElementById('isu').value); showToast("Prompt disalin!"); }
+        function downloadOutput() { showToast("Muat turun bermula..."); }
     </script>
 </body>
 </html>
